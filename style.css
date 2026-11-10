@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050205;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.cinema {
+    width: 100vw;
+    height: 100svh;
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at center, #35101f 0%, #140611 48%, #030204 100%);
+}
+
+/* Ambient lighting */
+
+.cinema::before {
+    content: "";
+    position: absolute;
+    width: 65vw;
+    height: 65vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: radial-gradient(circle, #a3164a35, transparent 70%);
+    filter: blur(35px);
+    animation: ambient 5s ease-in-out infinite alternate;
+}
+
+@keyframes ambient {
+    from { transform: scale(.8); opacity: .4; }
+    to { transform: scale(1.2); opacity: 1; }
+}
+
+/* Scenes */
+
+.scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.small-text {
+    color: #ffabc7;
+    letter-spacing: 6px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.scene h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 8vw, 75px);
+    font-weight: 500;
+    line-height: 1.15;
+    text-shadow: 0 0 35px #ff397b80;
+}
+
+.scene-one {
+    animation: scene1 20s ease both;
+}
+
+.scene-two {
+    animation: scene2 20s ease both;
+}
+
+.scene-three {
+    animation: scene3 20s ease both;
+}
+
+.scene-four {
+    animation: scene4 20s ease both;
+}
+
+.scene-five {
+    animation: scene5 20s ease both;
+}
+
+@keyframes scene1 {
+    0%, 3% { opacity: 0; visibility: visible; transform: translateY(35px); }
+    7%, 20% { opacity: 1; visibility: visible; transform: translateY(0); }
+    24% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; }
+}
+
+@keyframes scene2 {
+    0%, 21% { opacity: 0; visibility: hidden; transform: scale(.7); }
+    25% { visibility: visible; }
+    31%, 39% { opacity: 1; transform: scale(1); visibility: visible; }
+    44% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; }
+}
+
+@keyframes scene3 {
+    0%, 42% { opacity: 0; visibility: hidden; }
+    46% { visibility: visible; }
+    51%, 59% { opacity: 1; visibility: visible; }
+    64% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; }
+}
+
+@keyframes scene4 {
+    0%, 62% { opacity: 0; visibility: hidden; transform: translateY(30px); }
+    66% { visibility: visible; }
+    71%, 79% { opacity: 1; visibility: visible; transform: translateY(0); }
+    84% { opacity: 0; visibility: hidden; }
+    100% { opacity: 0; }
+}
+
+@keyframes scene5 {
+    0%, 82% { opacity: 0; visibility: hidden; transform: scale(.85); }
+    87% { visibility: visible; }
+    92%, 100% { opacity: 1; visibility: visible; transform: scale(1); }
+}
+
+/* 3D heart */
+
+.heart-container {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    display: grid;
+    place-items: center;
+    perspective: 800px;
+}
+
+.heart {
+    font-size: 135px;
+    line-height: 1;
+    color: #ff174f;
+    text-shadow:
+        0 0 10px #ff174f,
+        0 0 30px #ff174f,
+        0 0 65px #ff174f,
+        0 0 100px #b60038;
+    animation: heartbeat 1.3s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotateY(-10deg); }
+    50% { transform: scale(1.18) rotateY(10deg); }
+}
+
+.heart-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #ff174f;
+    filter: blur(90px);
+    opacity: .5;
+}
+
+.scene-two h2 {
+    margin-top: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(25px, 5vw, 42px);
+    color: #ffd2df;
+}
+
+/* Name scene */
+
+.name {
+    font-size: clamp(60px, 13vw, 115px) !important;
+    color: #ffb5cb;
+    text-shadow:
+        0 0 15px #ff5c91,
+        0 0 45px #ff174f,
+        0 0 90px #a80044 !important;
+    animation: nameGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow {
+    from { text-shadow: 0 0 15px #ff5c91; }
+    to { text-shadow: 0 0 60px #ff174f, 0 0 100px #a80044; }
+}
+
+.subtitle {
+    color: #f7c2d3;
+    font-size: clamp(12px, 2vw, 17px);
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+/* Message scene */
+
+.message-card {
+    width: min(90%, 550px);
+    padding: 40px 28px;
+    border: 1px solid #ff9ab755;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ffffff12, #ff286015);
+    box-shadow: 0 0 65px #ff174f25;
+    backdrop-filter: blur(15px);
+}
+
+.message-card p {
+    color: #ffadc8;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.message-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(24px, 5vw, 37px);
+    line-height: 1.5;
+}
+
+.message-card span {
+    display: block;
+    margin-top: 25px;
+    font-size: 35px;
+}
+
+/* Final scene */
+
+.final-heart {
+    font-size: 70px;
+    color: #ff174f;
+    text-shadow: 0 0 35px #ff174f;
+    animation: heartbeat 1.2s infinite;
+}
+
+.final-message {
+    margin-top: 25px;
+    color: #ffd0dd;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 4vw, 29px);
+}
+
+.signature {
+    margin-top: 35px;
+    color: #ffabc7;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+/* Floating petals and stars */
+
+.petals, .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -30px;
+    color: #ff7ba5;
+    font-size: 20px;
+    opacity: .75;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(700deg);
+        opacity: 0;
+    }
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.6); }
+}
+
+/* Progress bar */
+
+.progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ffffff15;
+    z-index: 5;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff174f, #ffabc7);
+}
+
+.timer {
+    position: absolute;
+    bottom: 17px;
+    right: 20px;
+    font-size: 11px;
+    color: #ffffff80;
+    z-index: 5;
+}
+
+/* Start controls */
+
+.controls {
+    position: fixed;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.controls button {
+    background: linear-gradient(135deg, #ff174f, #a80044);
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff174f65;
+}
+
+.controls p {
+    font-size: 11px;
+    color: #ffcfdd;
+    margin-top: 12px;
+}
+
+.controls.hide {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .small-text { letter-spacing: 4px; }
+    .message-card { padding: 30px 20px; }
+}
